@@ -1,11 +1,14 @@
 import React from "react";
+import { GlobalState } from "./Components/Global/GlobalState";
 import LocalQuote from "./Components/LocalQuote/LocalQuote";
 
 const App = () => {
   return (
-    <div>
-      <LocalQuote />
-    </div>
+    <GlobalState>
+      <div>
+        <LocalQuote />
+      </div>
+    </GlobalState>
   );
 };
 

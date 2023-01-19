@@ -1,11 +1,14 @@
-import React from "react";
+import { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 import { v4 as uuid } from "uuid";
+import { GlobalState, StateContext } from "../Global/GlobalState";
 
 const LocalQuote = () => {
-  const [quote, setQuote] = React.useState("");
-  const [quoteAut, setQuoteAut] = React.useState("");
+  const value = useContext(StateContext);
+  const [quote, setQuote] = useState("");
+  const [quoteAut, setQuoteAut] = useState("");
+  console.log(value);
   let data = [
     {
       id: 1,
@@ -20,7 +23,7 @@ const LocalQuote = () => {
     },
   ];
   //   console.log(viewQuote);
-  const [viewQuote, setViewQuote] = React.useState([]);
+  const [viewQuote, setViewQuote] = useState([]);
 
   console.log(quote, quoteAut);
 
@@ -32,12 +35,12 @@ const LocalQuote = () => {
     setQuoteAut("");
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const ref = JSON.parse(localStorage.getItem("view"));
     setViewQuote(ref);
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     localStorage.setItem("view", JSON.stringify(viewQuote));
   }, [viewQuote]);
 
